@@ -4,6 +4,35 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <script src="./jquery.js"></script>
+    <style>
+      .box1,
+      .box2 {
+        width: 100px;
+        height: 50px;
+        background-color: pink;
+        border: 5px solid #ffffff;
+      }
+    </style>
   </head>
-  <body></body>
+  <body>
+    <div class="box1"></div>
+    <div class="box2"></div>
+  </body>
+
+  <script>
+    $(function () {
+      let timer = null;
+      $(document).on("mousemove", function (e) {
+        if (timer) return;
+        timer = setTimeout(function () {
+          const x = e.pageX;
+          const y = e.pageY;
+          $(".box1")[0].innerHTML = x + "px";
+          $(".box2")[0].innerHTML = y + "px";
+          timer = null;
+        }, 200);
+      });
+    });
+  </script>
 </html>
